@@ -11,6 +11,7 @@
   "homepage": "https://magicinterview.app",
   "icon": "./assets/icon-192.png",
   "privacyPolicyUrl": "https://magicinterview.app/how-it-works#privacy",
+  "documentationUrl": "https://github.com/samihalawa/magicinterview-plugin#readme",
   "repository": "https://github.com/samihalawa/magicinterview-plugin",
   "license": "MIT",
   "keywords": [
