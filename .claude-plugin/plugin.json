@@ -1,0 +1,23 @@
+{
+  "name": "magicinterview",
+  "displayName": "MagicInterview",
+  "version": "1.0.0",
+  "description": "Prepare, manage, and troubleshoot interviews and professional conversations with current, reusable context.",
+  "author": {
+    "name": "Sami Halawa",
+    "email": "support@magicinterview.app",
+    "url": "https://magicinterview.app"
+  },
+  "homepage": "https://magicinterview.app",
+  "repository": "https://github.com/samihalawa/magicinterview-plugin",
+  "license": "MIT",
+  "keywords": [
+    "interview-preparation",
+    "meeting-preparation",
+    "conversation-coaching",
+    "sales-calls",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

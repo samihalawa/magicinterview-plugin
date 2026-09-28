@@ -1,0 +1,15 @@
+interface:
+  display_name: "Prepare with MagicInterview"
+  short_description: "Prepare and maintain meeting context"
+  default_prompt: "Use $meeting-prep to prepare my current and recent meetings in MagicInterview."
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "magicinterview"
+      description: "Manage MagicInterview conversations, context, coaching, navigation, and debug logs."
+      transport: "streamable_http"
+      url: "https://magicinterview.app/mcp"
+
+policy:
+  allow_implicit_invocation: true

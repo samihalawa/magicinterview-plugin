@@ -1,0 +1,50 @@
+{
+  "name": "magicinterview",
+  "version": "1.0.0",
+  "description": "Prepare, manage, and troubleshoot interviews and professional conversations with current, reusable context.",
+  "author": {
+    "name": "Sami Halawa"
+  },
+  "homepage": "https://magicinterview.app/",
+  "repository": "https://github.com/samihalawa/magicinterview-plugin",
+  "license": "MIT",
+  "keywords": [
+    "magicinterview",
+    "interview",
+    "meeting-preparation",
+    "conversation-coaching",
+    "sales-calls",
+    "mcp"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "MagicInterview",
+    "shortDescription": "Prepare for every important conversation.",
+    "longDescription": "Build and maintain focused preparation for interviews, meetings, sales calls, assessments, and other professional conversations. MagicInterview keeps reusable context and source material organized, generates practical coaching, exposes persisted debug logs, and returns a direct link to the exact conversation.",
+    "developerName": "MagicInterview",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "Prepare my next interview in MagicInterview using the job description and my current background.",
+      "Prepare today's professional meetings in MagicInterview, starting with the next unfinished one.",
+      "Update my existing MagicInterview conversation with the newest company and role context.",
+      "Create a practical briefing for my next sales call and open the exact MagicInterview conversation.",
+      "Inspect the latest MagicInterview debug logs and explain why my conversation failed."
+    ],
+    "websiteURL": "https://magicinterview.app/",
+    "privacyPolicyURL": "https://magicinterview.app/how-it-works#privacy",
+    "termsOfServiceURL": "https://magicinterview.app/how-it-works#terms",
+    "brandColor": "#7795EB",
+    "composerIcon": "./assets/icon-192.png",
+    "logo": "./assets/icon-512.png",
+    "screenshots": [
+      "./assets/mac-coach.webp",
+      "./assets/iphone-answer.webp",
+      "./assets/iphone-workspace.webp"
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

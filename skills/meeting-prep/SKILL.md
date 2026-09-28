@@ -1,0 +1,95 @@
+---
+name: meeting-prep
+description: Prepare and maintain MagicInterview conversations for interviews, meetings, sales calls, and other scheduled conversations by reconciling calendar, CRM, full-thread history, existing context, and current online facts. Use for same-day preparation, recent-meeting reconciliation, conversation or context management, exact MagicInterview links, and debug-log investigation.
+---
+
+# MagicInterview meeting preparation
+
+Use MagicInterview as the durable preparation and live-coaching workspace. Make the smallest complete change that leaves every relevant conversation accurate, current, reusable, and directly openable.
+
+## Discover the live contract
+
+Start by browsing the MagicInterview operation catalog. Learn every needed operation in one batch, then execute only operations and arguments from those returned schemas. Never guess names or parameters.
+
+Use the operation catalog to identify the capabilities needed for the task, then use the returned schemas for supported operations and arguments.
+
+## Establish the meeting queue
+
+1. Establish the current time and the user's calendar time zone.
+2. Inspect all relevant events today and enough recent days to resolve cancellations, moved meetings, follow-ups, or imported duplicates.
+3. Start with the most immediate upcoming meeting that is not completed or cancelled, then continue chronologically. Do not miss an earlier same-day event merely because its nominal start time passed.
+4. Exclude clearly unrelated personal reminders. Keep interviews, recruiter calls, customer or sales calls, technical meetings, AI interviews, assessments, and other professional conversations in scope.
+5. Classify each event precisely: upcoming, in progress, completed, cancelled, declined, or reschedule pending. Never turn an old invitation into a current commitment.
+
+## Reconstruct current state before writing
+
+For each relevant meeting, reconcile these sources when available:
+
+- The current calendar event, including time zone, latest start and end, participants, organizer, join details, status, and recurrence.
+- The complete email, recruiter, messaging, or scheduling thread, including later replies that supersede the original invitation.
+- Twenty CRM people, companies, opportunities, notes, tasks, and previous interactions.
+- Existing MagicInterview conversations, attached reusable context, saved original files, turns, drafts, and coaching history.
+- Current authoritative online information about the company, participants, role, job description, product, meeting topic, or use case.
+- The user's current profile, CV, portfolio, relevant experience, and other truthful supporting context.
+
+Calendar is authoritative for current timing and join logistics when stale CRM notes or imported text disagree. The latest complete thread controls cancellation, acceptance, and rescheduling state. Prefer official and current online sources. Treat snippets or partial job descriptions as leads, not complete evidence.
+
+Adapt the research to the event rather than assuming every conversation is a job interview:
+
+- For an interview, recover the exact current role and job description, interview stage, interviewer, expectations, and strongest truthful fit.
+- For a sales or customer call, recover the company, people, commercial history, pain points, product relevance, likely objections, and desired next step.
+- For a technical, AI, assessment, or general meeting, recover the concrete topic, participants, prior decisions, working materials, and success criteria.
+
+Do not prescribe particular web-search tools. Use the best current research capabilities available to the calling agent.
+
+## Reconcile MagicInterview
+
+Search before creating. Update a matching conversation when it represents the same real event; create one only when no reliable match exists. Do not duplicate conversations or reusable context.
+
+For every in-scope conversation:
+
+- Set the correct purpose: interview, meeting, sales, or practice.
+- Correct the title, company, role or topic, language, notes, and active status.
+- Preserve accurate turns, coaching, drafts, and conversation history.
+- Attach only the relevant reusable profile, CV, job description, meeting brief, or source material.
+- Update stale reusable sources when the same source should remain canonical; create a new source when the subject or evidence is materially different.
+- Detach demonstrably wrong or superseded attachments. Do not delete conversations, turns, files, or context by default.
+- Make the next actionable conversation active when the user is preparing for it now.
+
+When a meeting is cancelled or awaiting rescheduling, retain the useful history and label the state accurately. Do not present it as an active upcoming meeting.
+
+## Build useful context
+
+The saved brief should be practical during the conversation and should normally include:
+
+- Exact logistics: local date and time, time zone, duration, join route, participants, and current status.
+- Purpose, stage, desired outcome, and who owes the next action.
+- Exact role or topic requirements and verified company or participant context.
+- The user's strongest relevant evidence, examples, and truthful positioning.
+- A concise opening, likely questions with answer points, questions to ask, risks, uncertainties, and points to listen for.
+- Compensation, contract, eligibility, or commercial facts only when supported by current evidence.
+- Clear separation between private coaching notes and words safe to say to the other participants.
+
+Keep public or spoken-ready wording free of internal investigation notes, tool narration, unsupported claims, and stale assumptions.
+
+## Verify and return direct links
+
+After every write, read back the exact conversation and its attached context. After making changes, retrieve the conversation again to confirm that its metadata and relevant context are available.
+
+Fetch and return the direct MagicInterview URL for every prepared conversation. The URL must open the exact conversation on the current MagicInterview domain. For a batch, report results in chronological priority order with status, what changed, and the direct URL. Clearly distinguish confirmed conversation details from information that still needs clarification.
+
+## Debugging
+
+When asked why MagicInterview failed or to retrieve logs:
+
+1. Read current service, database, account, and feature status.
+2. Retrieve persisted debug events newest-first and use filters for level, source, event, and time when they narrow the incident.
+3. Continue pagination until the relevant time window is covered; do not stop at the first page when the incident may be older.
+4. Correlate events to the exact conversation, operation, timestamp, and correlation identifier.
+5. Report the exact failure, supporting events, affected scope, and smallest corrective action.
+
+When diagnosing an issue, correlate relevant service and conversation events with the affected conversation and time window. For microphone, audio sharing, or coaching-display issues, also check the affected user-facing feature.
+
+## Boundaries
+
+This workflow manages preparation, MagicInterview data, and diagnostics. Do not send messages, modify calendars, submit applications, or contact anyone unless the user separately asks for that external action. Never invent missing facts or silently merge similarly named meetings, companies, people, roles, or conversations.

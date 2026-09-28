@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "magicinterview": {
+      "type": "http",
+      "url": "https://magicinterview.app/mcp"
+    }
+  }
+}
