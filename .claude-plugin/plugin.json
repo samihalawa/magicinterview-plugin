@@ -9,6 +9,8 @@
     "url": "https://magicinterview.app"
   },
   "homepage": "https://magicinterview.app",
+  "icon": "../assets/icon-192.png",
+  "privacyPolicyUrl": "https://magicinterview.app/how-it-works#privacy",
   "repository": "https://github.com/samihalawa/magicinterview-plugin",
   "license": "MIT",
   "keywords": [
