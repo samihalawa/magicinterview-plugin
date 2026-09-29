@@ -6,7 +6,8 @@ Turn interviews, meetings, sales calls, assessments, and other professional conv
 
 - Prepare an upcoming interview from the role, company, job description, and your relevant background.
 - Help an AI assistant prepare professional meetings and sales calls in chronological priority order when relevant calendar and conversation context is available.
-- Create, find, update, and open MagicInterview conversations without duplicating existing work.
+- Create, find, and update projects and conversations without duplicating existing work; open the exact conversation in MagicInterview.
+- Keep shared project briefs and sources consistent across related conversations while preserving individual notes and history.
 - Maintain reusable context and attached source material across related conversations.
 - Generate coaching from the context saved with a conversation.
 - Retrieve account, service, conversation, and persisted debug information when something fails.
@@ -24,6 +25,7 @@ https://magicinterview.app/mcp
 ## Suggested prompts
 
 - Prepare my next interview in MagicInterview using the job description and my current background.
+- Create a project for my interview process, reuse its shared brief and sources, and add the next interview as a conversation.
 - Prepare today's professional meetings in MagicInterview, starting with the next unfinished one.
 - Update my existing MagicInterview conversation with the newest company and role context.
 - Create a practical briefing for my next sales call and open the exact MagicInterview conversation.

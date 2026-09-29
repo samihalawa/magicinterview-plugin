@@ -44,7 +44,9 @@ Do not prescribe particular web-search tools. Use the best current research capa
 
 ## Reconcile MagicInterview
 
-Search before creating. Update a matching conversation when it represents the same real event; create one only when no reliable match exists. Do not duplicate conversations or reusable context.
+Search projects and conversations before creating. Match by the real company, role or topic, event time, and existing membership—not by a similar title alone. Update a matching project and conversation when they represent the same work; create only when no reliable match exists. Do not duplicate projects, conversations, or reusable context.
+
+Use projects for related interviews or meetings that share a purpose, brief, and sources. Learn the current project operations from the catalog. Keep the reusable brief and shared sources on the project, put event-specific logistics and notes on the conversation, and assign each conversation to the correct project. Inspect existing project membership and individual overrides before moving a conversation or changing shared material. Shared project changes should reach member conversations without replacing accurate individual notes or history. Never merge or delete similarly named projects without explicit authority and exact IDs.
 
 For every in-scope conversation:
 
@@ -74,7 +76,7 @@ Keep public or spoken-ready wording free of internal investigation notes, tool n
 
 ## Verify and return direct links
 
-After every write, read back the exact conversation and its attached context. After making changes, retrieve the conversation again to confirm that its metadata and relevant context are available.
+After every write, read back the exact project or conversation and its attached context. Confirm project membership, shared sources, effective notes, and individual overrides are correct. After making changes, retrieve the conversation again to confirm that its metadata and relevant context are available.
 
 Fetch and return the direct MagicInterview URL for every prepared conversation. The URL must open the exact conversation on the current MagicInterview domain. For a batch, report results in chronological priority order with status, what changed, and the direct URL. Clearly distinguish confirmed conversation details from information that still needs clarification.
 
