@@ -13,6 +13,8 @@ Start by browsing the MagicInterview operation catalog. Learn every needed opera
 
 Use the operation catalog to identify the capabilities needed for the task, then use the returned schemas for supported operations and arguments.
 
+Use `read_tool` for operations marked read-only in the catalog and `execute_tool` for operations that change the workspace. Both accept the learned operation name and arguments; reads and writes are separate for accurate client permissions.
+
 ## Establish the meeting queue
 
 1. Establish the current time and the user's calendar time zone.
