@@ -1,22 +1,25 @@
 # MagicInterview plugin
 
-Turn interviews, meetings, sales calls, assessments, and other professional conversations into focused, reusable preparation. The MagicInterview plugin helps an AI assistant organize conversation context, maintain source material, create or update practical briefs, inspect persisted debug logs, and return a direct link to the exact conversation in MagicInterview.
+Know what to say next in a job interview, client call, sales conversation, or important meeting. MagicInterview listens as the conversation unfolds and suggests clear, speakable responses grounded in the material you choose. This plugin connects your AI assistant to your MagicInterview workspace so it can organize that material, keep related conversations consistent, and open the exact conversation where live help appears.
 
 ## What it can do
 
-- Prepare an upcoming interview from the role, company, job description, and your relevant background.
-- Help an AI assistant prepare professional meetings and sales calls in chronological priority order when relevant calendar and conversation context is available.
+- Bring your CV and the job description into a job interview so live suggestions reflect your real experience and the role.
+- Bring client briefs and notes into sales calls so you have useful words in view when questions or objections come up.
+- Use the web app on a computer or phone, or the Android app. On iPhone, add the web app to your Home Screen; the native iOS app is coming soon.
+- Help an AI assistant set up professional meetings in chronological priority order when relevant calendar and conversation context is available.
 - Create, find, and update projects and conversations without duplicating existing work; open the exact conversation in MagicInterview.
 - Keep shared project briefs and sources consistent across related conversations while preserving individual notes and history.
 - Maintain reusable context and attached source material across related conversations.
-- Generate coaching from the context saved with a conversation.
-- Retrieve account, service, conversation, and persisted debug information when something fails.
+- Request context-aware coaching and keep the live conversation directly openable.
 
-## Connect
+## Connect through your assistant
 
 Install the plugin and sign in to your MagicInterview account when your AI assistant asks to connect. Authentication uses the standard OAuth flow; no API key needs to be copied into the plugin.
 
-The remote MCP endpoint is:
+### Technical MCP endpoint
+
+For clients configured manually, the remote Streamable HTTP endpoint is:
 
 ```text
 https://magicinterview.app/mcp
@@ -24,12 +27,13 @@ https://magicinterview.app/mcp
 
 ## Suggested prompts
 
-- Prepare my next interview in MagicInterview using the job description and my current background.
-- Create a project for my interview process, reuse its shared brief and sources, and add the next interview as a conversation.
-- Prepare today's professional meetings in MagicInterview, starting with the next unfinished one.
-- Update my existing MagicInterview conversation with the newest company and role context.
-- Create a practical briefing for my next sales call and open the exact MagicInterview conversation.
-- Inspect the latest MagicInterview debug logs and explain why my conversation failed.
+- I have a job interview. Use my CV and the job description to set up live help, then open that MagicInterview conversation.
+- I finally have a meeting with a potential client. Use our brief and past notes to set up live suggestions for the call.
+- Prepare today's meetings from my available calendar context and give me MagicInterview links I can open on my phone.
+
+## Troubleshooting for connected users
+
+If something goes wrong, ask your assistant to check the connection for the affected MagicInterview conversation. Your saved notes and conversation history remain in your workspace.
 
 ## Links
 

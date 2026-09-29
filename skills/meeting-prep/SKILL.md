@@ -1,19 +1,19 @@
 ---
 name: meeting-prep
-description: Prepare and maintain MagicInterview conversations for interviews, meetings, sales calls, and other scheduled conversations by reconciling calendar, CRM, full-thread history, existing context, and current online facts. Use for same-day preparation, recent-meeting reconciliation, conversation or context management, exact MagicInterview links, and debug-log investigation.
+description: Set up MagicInterview live help for job interviews, client calls, sales conversations, and other meetings. Connect the right CV, job description, client brief, and notes; reconcile existing projects and conversations; return the exact live-conversation link. Also use for same-day meeting preparation, context management, coaching, and debug-log investigation.
 ---
 
-# MagicInterview meeting preparation
+# MagicInterview live conversation copilot
 
-Use MagicInterview as the durable preparation and live-coaching workspace. Make the smallest complete change that leaves every relevant conversation accurate, current, reusable, and directly openable.
+MagicInterview suggests what to say next while an interview or meeting unfolds. Use its projects and sources to ground those suggestions in the user's real background and the specific role, client, or topic. Make the smallest complete change that leaves every relevant conversation accurate, current, reusable, and directly openable.
 
-## Discover the live contract
+For a job interview, connect the user's CV and the actual job description. For a prospective client, connect the client brief, prior discussion, offer, and likely objections. For another meeting, use the documents and notes that matter to that conversation. Return the direct link so the user can open MagicInterview on a computer or phone and follow live suggestions as the other person speaks. The web app works on a phone; Android has an app, while the native iOS app is not yet available. Do not promise perfect answers or that listening starts remotely through MCP.
 
-Start by browsing the MagicInterview operation catalog. Learn every needed operation in one batch, then execute only operations and arguments from those returned schemas. Never guess names or parameters.
+## Use the live connection
 
-Use the operation catalog to identify the capabilities needed for the task, then use the returned schemas for supported operations and arguments.
+Use the tools and schemas the current MagicInterview connection exposes. The ChatGPT directory connection exposes named operations directly, such as `list_projects`, `get_conversation`, `request_coaching`, and `get_conversation_url`; call the named tool for each action. Never guess arguments or invoke an operation that is not exposed.
 
-Use `read_tool` for operations marked read-only in the catalog and `execute_tool` for operations that change the workspace. Both accept the learned operation name and arguments; reads and writes are separate for accurate client permissions.
+Other MagicInterview clients may use the compact `/mcp` connection. On that connection, browse the operation catalog, learn the needed schemas in one batch, then use `read_tool` for read-only operations and `execute_tool` for changes. Never assume that the two connection shapes have the same callable tool names.
 
 ## Establish the meeting queue
 

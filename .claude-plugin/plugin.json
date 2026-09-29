@@ -1,8 +1,8 @@
 {
   "name": "magicinterview",
   "displayName": "MagicInterview",
-  "version": "1.1.1",
-  "description": "Prepare, manage, and troubleshoot interviews and professional conversations with current, reusable context.",
+  "version": "1.1.2",
+  "description": "Know what to say next in interviews, client calls, and meetings with live, context-grounded suggestions.",
   "author": {
     "name": "Sami Halawa",
     "email": "support@magicinterview.app",
@@ -15,9 +15,9 @@
   "repository": "https://github.com/samihalawa/magicinterview-plugin",
   "license": "MIT",
   "keywords": [
-    "interview-preparation",
-    "meeting-preparation",
-    "conversation-coaching",
+    "live-interview-help",
+    "live-meeting-help",
+    "conversation-copilot",
     "sales-calls",
     "mcp"
   ],

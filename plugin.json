@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "magicinterview",
-  "version": "1.0.0",
-  "description": "Prepare, manage, and troubleshoot interviews and professional conversations with current, reusable context.",
+  "version": "1.1.2",
+  "description": "Know what to say next in interviews, client calls, and meetings with live, context-grounded suggestions.",
   "author": {
     "name": "Sami Halawa",
     "email": "support@magicinterview.app",
@@ -12,9 +12,9 @@
   "repository": "https://github.com/samihalawa/magicinterview-plugin",
   "license": "MIT",
   "keywords": [
-    "interview-preparation",
-    "meeting-preparation",
-    "conversation-coaching",
+    "live-interview-help",
+    "live-meeting-help",
+    "conversation-copilot",
     "sales-calls",
     "mcp"
   ],
@@ -22,8 +22,8 @@
     "com.openai": {
       "interface": {
         "displayName": "MagicInterview",
-        "shortDescription": "Prepare for every important conversation.",
-        "longDescription": "Build and maintain focused preparation for interviews, meetings, sales calls, assessments, and other professional conversations. MagicInterview keeps reusable context and source material organized, generates practical coaching, exposes persisted debug logs, and returns a direct link to the exact conversation.",
+        "shortDescription": "Know what to say next.",
+        "longDescription": "MagicInterview helps you know what to say next in job interviews, client calls, sales conversations, and other meetings. Add your CV and the job description, or a client brief and notes. As the conversation unfolds, MagicInterview suggests clear, context-grounded responses you can use or adapt. Open it on your computer or phone; Android also has a native app. Keep each meeting’s context organized, then open the exact MagicInterview conversation when it is time to speak.",
         "developerName": "MagicInterview",
         "category": "Productivity",
         "capabilities": [
@@ -35,11 +35,9 @@
         "privacyPolicyURL": "https://magicinterview.app/how-it-works#privacy",
         "termsOfServiceURL": "https://magicinterview.app/how-it-works#terms",
         "defaultPrompt": [
-          "Prepare my next interview in MagicInterview using the job description and my current background.",
-          "Prepare today's professional meetings in MagicInterview, starting with the next unfinished one.",
-          "Update my existing MagicInterview conversation with the newest company and role context.",
-          "Create a practical briefing for my next sales call and open the exact MagicInterview conversation.",
-          "Inspect the latest MagicInterview debug logs and explain why my conversation failed."
+          "I have a job interview. Use my CV and the job description to set up live help, then open that MagicInterview conversation.",
+          "I finally have a meeting with a potential client. Use our brief and past notes to set up live suggestions for the call.",
+          "Prepare today's meetings from my available calendar context and give me MagicInterview links I can open on my phone."
         ],
         "brandColor": "#7795EB",
         "composerIcon": "./assets/icon-192.png",
