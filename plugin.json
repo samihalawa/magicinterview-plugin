@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "magicinterview",
-  "version": "1.1.2",
-  "description": "Know what to say next in interviews, client calls, and meetings with live, context-grounded suggestions.",
+  "version": "1.1.3",
+  "description": "Get live AI suggestions for what to say in job interviews, sales calls, and meetings, tailored to your CV, job description, client brief, and notes.",
   "author": {
     "name": "Sami Halawa",
     "email": "support@magicinterview.app",
@@ -12,6 +12,13 @@
   "repository": "https://github.com/samihalawa/magicinterview-plugin",
   "license": "MIT",
   "keywords": [
+    "magicinterview",
+    "ai-interview-assistant",
+    "live-meeting-assistant",
+    "what-to-say",
+    "job-interviews",
+    "sales-call-assistant",
+    "client-meetings",
     "live-interview-help",
     "live-meeting-help",
     "conversation-copilot",
@@ -23,7 +30,7 @@
       "interface": {
         "displayName": "MagicInterview",
         "shortDescription": "Know what to say next.",
-        "longDescription": "MagicInterview helps you know what to say next in job interviews, client calls, sales conversations, and other meetings. Add your CV and the job description, or a client brief and notes. As the conversation unfolds, MagicInterview suggests clear, context-grounded responses you can use or adapt. Open it on your computer or phone; Android also has a native app. Keep each meeting’s context organized, then open the exact MagicInterview conversation when it is time to speak.",
+        "longDescription": "Know what to say next, even when the question catches you off guard. MagicInterview listens to your interview or meeting and shows suggested responses as the conversation happens. Add your CV and the job description to make your answers relevant to the role, or bring your client brief and notes to a sales call. Read a suggestion, adapt it, and keep the conversation moving. Use MagicInterview on your computer or keep it open on your phone beside your call. Android also has a native app. This plugin lets your AI assistant organize your projects, documents, and conversations, then open the right meeting in MagicInterview.",
         "developerName": "MagicInterview",
         "category": "Productivity",
         "capabilities": [
@@ -36,7 +43,7 @@
         "termsOfServiceURL": "https://magicinterview.app/how-it-works#terms",
         "defaultPrompt": [
           "I have a job interview. Use my CV and the job description to set up live help, then open that MagicInterview conversation.",
-          "I finally have a meeting with a potential client. Use our brief and past notes to set up live suggestions for the call.",
+          "I have a meeting with a potential client. Use our brief and past notes to set up live suggestions for the call.",
           "Prepare today's meetings from my available calendar context and give me MagicInterview links I can open on my phone."
         ],
         "brandColor": "#7795EB",

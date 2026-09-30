@@ -1,17 +1,32 @@
-# MagicInterview plugin
+# MagicInterview — know what to say next, live
 
-Know what to say next in a job interview, client call, sales conversation, or important meeting. MagicInterview listens as the conversation unfolds and suggests clear, speakable responses grounded in the material you choose. This plugin connects your AI assistant to your MagicInterview workspace so it can organize that material, keep related conversations consistent, and open the exact conversation where live help appears.
+![MagicInterview logo](assets/icon-192.png)
 
-## What it can do
+Know what to say next, even when the question catches you off guard. MagicInterview listens to your interview or meeting and shows suggested responses as the conversation happens. Add your CV and the job description, or bring a client brief and notes. Read a suggestion, adapt it, and keep the conversation moving.
 
-- Bring your CV and the job description into a job interview so live suggestions reflect your real experience and the role.
-- Bring client briefs and notes into sales calls so you have useful words in view when questions or objections come up.
-- Use the web app on a computer or phone, or the Android app. On iPhone, add the web app to your Home Screen; the native iOS app is coming soon.
-- Help an AI assistant set up professional meetings in chronological priority order when relevant calendar and conversation context is available.
-- Create, find, and update projects and conversations without duplicating existing work; open the exact conversation in MagicInterview.
-- Keep shared project briefs and sources consistent across related conversations while preserving individual notes and history.
-- Maintain reusable context and attached source material across related conversations.
-- Request context-aware coaching and keep the live conversation directly openable.
+## Live help when the conversation matters
+
+**Interviewing for your next job?** Add your CV and the job description. Get live suggestions that connect your experience to the role when the interviewer asks a question.
+
+**Finally meeting that potential client?** Bring your client brief, offer, and past notes. Get help answering questions, responding to objections, and explaining the value of your offer as the call unfolds.
+
+**Keep your next answer in view.** Open MagicInterview on your phone beside your computer, or use it on the same computer as your call. Start listening in MagicInterview and follow the suggestions as the conversation happens.
+
+![MagicInterview live answer on a phone](assets/iphone-answer.webp)
+
+## What the plugin connects
+
+This plugin connects your AI assistant to your MagicInterview workspace so it can:
+
+- Find, create, and update projects and conversations, then open the exact meeting in MagicInterview.
+- Add relevant CVs, job descriptions, client briefs, and documents to your conversations.
+- Keep shared project sources consistent across related meetings while preserving individual notes and history.
+- Help set up today's professional meetings in time order. When your assistant has calendar or CRM access, it can use that context too.
+- Request coaching and retrieve saved debug logs to investigate a session problem.
+
+Your assistant sets up the context and opens the right conversation. Start listening in the MagicInterview app when you are ready for live suggestions.
+
+Use the web app on your computer or phone, or the Android app. On iPhone, add MagicInterview to your Home Screen for quick access.
 
 ## Connect through your assistant
 
@@ -28,12 +43,12 @@ https://magicinterview.app/mcp
 ## Suggested prompts
 
 - I have a job interview. Use my CV and the job description to set up live help, then open that MagicInterview conversation.
-- I finally have a meeting with a potential client. Use our brief and past notes to set up live suggestions for the call.
+- I have a meeting with a potential client. Use our brief and past notes to set up live suggestions for the call.
 - Prepare today's meetings from my available calendar context and give me MagicInterview links I can open on my phone.
 
 ## Troubleshooting for connected users
 
-If something goes wrong, ask your assistant to check the connection for the affected MagicInterview conversation. Your saved notes and conversation history remain in your workspace.
+If something goes wrong, ask your assistant to check the affected MagicInterview conversation and any saved debug information available in your workspace.
 
 ## Links
 
