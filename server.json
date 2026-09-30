@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.samihalawa/magicinterview",
+  "title": "MagicInterview",
+  "description": "Live suggestions for what to say next in job interviews, client calls, and meetings.",
+  "websiteUrl": "https://magicinterview.app",
+  "repository": {
+    "url": "https://github.com/samihalawa/magicinterview-plugin",
+    "source": "github"
+  },
+  "version": "1.1.2",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://magicinterview.app/mcp"
+    }
+  ]
+}
