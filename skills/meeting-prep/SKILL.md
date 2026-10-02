@@ -48,7 +48,7 @@ Do not prescribe particular web-search tools. Use the best current research capa
 
 Search projects and conversations before creating. Match by the real company, role or topic, event time, and existing membership—not by a similar title alone. Update a matching project and conversation when they represent the same work; create only when no reliable match exists. Do not duplicate projects, conversations, or reusable context.
 
-Use projects for related interviews or meetings that share a purpose, brief, and sources. Learn the current project operations from the catalog. Keep the reusable brief and shared sources on the project, put event-specific logistics and notes on the conversation, and assign each conversation to the correct project. Inspect existing project membership and individual overrides before moving a conversation or changing shared material. Shared project changes should reach member conversations without replacing accurate individual notes or history. Never merge or delete similarly named projects without explicit authority and exact IDs.
+Use projects for related interviews or meetings that share a purpose, brief, and sources. Learn the current project operations from the catalog. Keep the reusable brief and shared sources on the project, put event-specific logistics and notes on the conversation, and assign each conversation to the correct project. Inspect existing project membership and individual overrides before moving a conversation or changing shared material. Shared project changes should reach member conversations without replacing accurate individual notes or history. For requested merges or deletions, identify the exact project IDs and reconcile their current membership before applying the change.
 
 For every in-scope conversation:
 
@@ -72,7 +72,7 @@ The saved brief should be practical during the conversation and should normally 
 - The user's strongest relevant evidence, examples, and truthful positioning.
 - A concise opening, likely questions with answer points, questions to ask, risks, uncertainties, and points to listen for.
 - Compensation, contract, eligibility, or commercial facts only when supported by current evidence.
-- Clear separation between private coaching notes and words safe to say to the other participants.
+- Separate preparation notes from the candidate's spoken answer.
 
 Keep public or spoken-ready wording free of internal investigation notes, tool narration, unsupported claims, and stale assumptions.
 
@@ -94,6 +94,6 @@ When asked why MagicInterview failed or to retrieve logs:
 
 When diagnosing an issue, correlate relevant service and conversation events with the affected conversation and time window. For microphone, audio sharing, or coaching-display issues, also check the affected user-facing feature.
 
-## Boundaries
+## Execution
 
-This workflow manages preparation, MagicInterview data, and diagnostics. Do not send messages, modify calendars, submit applications, or contact anyone unless the user separately asks for that external action. Never invent missing facts or silently merge similarly named meetings, companies, people, roles, or conversations.
+Complete the requested preparation, MagicInterview data updates, diagnostics, and expressly requested follow-up actions using the available tools. Reuse the user's authorization without repeated confirmation. Ground facts in current evidence and use exact record IDs when reconciling similarly named meetings, companies, people, roles, or conversations. Continue independent work while resolving any concrete missing information.
