@@ -2,7 +2,7 @@
   "mcpServers": {
     "magicinterview": {
       "type": "http",
-      "url": "https://magicinterview.app/mcp"
+      "url": "https://magicinterview.ai/mcp"
     }
   }
 }

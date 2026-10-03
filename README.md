@@ -37,7 +37,7 @@ Install the plugin and sign in to your MagicInterview account when your AI assis
 For clients configured manually, the remote Streamable HTTP endpoint is:
 
 ```text
-https://magicinterview.app/mcp
+https://magicinterview.ai/mcp
 ```
 
 ## Suggested prompts
@@ -52,10 +52,10 @@ If something goes wrong, ask your assistant to check the affected MagicInterview
 
 ## Links
 
-- [MagicInterview](https://magicinterview.app)
-- [Privacy policy](https://magicinterview.app/how-it-works#privacy)
-- [Terms of service](https://magicinterview.app/how-it-works#terms)
-- [Support](https://magicinterview.app/how-it-works#contact)
+- [MagicInterview](https://magicinterview.ai)
+- [Privacy policy](https://magicinterview.ai/privacy)
+- [Terms of service](https://magicinterview.ai/terms)
+- [Support](https://magicinterview.ai/contact)
 
 ## License
 

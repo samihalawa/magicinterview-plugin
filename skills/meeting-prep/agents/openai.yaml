@@ -9,7 +9,7 @@ dependencies:
       value: "magicinterview"
       description: "Manage MagicInterview projects, conversations, context, coaching, direct links, and debug logs."
       transport: "streamable_http"
-      url: "https://magicinterview.app/mcp"
+      url: "https://magicinterview.ai/mcp"
 
 policy:
   allow_implicit_invocation: true

@@ -1,14 +1,14 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "magicinterview",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "description": "Get live AI suggestions for what to say in job interviews, sales calls, and meetings, tailored to your CV, job description, client brief, and notes.",
   "author": {
     "name": "Sami Halawa",
-    "email": "support@magicinterview.app",
-    "url": "https://magicinterview.app"
+    "email": "support@magicinterview.ai",
+    "url": "https://magicinterview.ai"
   },
-  "homepage": "https://magicinterview.app",
+  "homepage": "https://magicinterview.ai",
   "repository": "https://github.com/samihalawa/magicinterview-plugin",
   "license": "MIT",
   "keywords": [
@@ -38,9 +38,9 @@
           "Write",
           "Interactive"
         ],
-        "websiteURL": "https://magicinterview.app",
-        "privacyPolicyURL": "https://magicinterview.app/how-it-works#privacy",
-        "termsOfServiceURL": "https://magicinterview.app/how-it-works#terms",
+        "websiteURL": "https://magicinterview.ai",
+        "privacyPolicyURL": "https://magicinterview.ai/privacy",
+        "termsOfServiceURL": "https://magicinterview.ai/terms",
         "defaultPrompt": [
           "I have a job interview. Use my CV and the job description to set up live help, then open that MagicInterview conversation.",
           "I have a meeting with a potential client. Use our brief and past notes to set up live suggestions for the call.",
