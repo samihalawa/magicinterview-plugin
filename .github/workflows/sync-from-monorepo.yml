@@ -3,8 +3,10 @@ name: Sync from monorepo
 # This public repository is a generated mirror. The source is plugins/magicinterview
 # in samihalawa/2026-CODEX-MagicInterview (this file included); do not edit here.
 # The Anthropic directory webhook, MCP Registry, Glama and LobeHub listings read this repo.
-# Manual dispatch only: the normal route is script/publish_plugin_mirror.sh in the monorepo.
+# Runs here because Actions are free on this public repo; the private monorepo has no Actions budget.
 on:
+  schedule:
+    - cron: "*/30 * * * *"
   workflow_dispatch:
 
 concurrency: sync-from-monorepo
