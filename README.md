@@ -1,7 +1,5 @@
 # MagicInterview — know what to say next, live
 
-> **Moved.** The canonical source of this plugin (MagicInterview: live interview and meeting help that hears the conversation and shows what to say next) now lives in the MagicInterview monorepo `samihalawa/2026-CODEX-MagicInterview` under `plugins/magicinterview`. This repository is archived; its tagged releases stay downloadable.
-
 ![MagicInterview logo](assets/icon-192.png)
 
 MagicInterview helps you know what to say next in interviews and meetings. In the full MagicInterview app, start live listening to receive suggested responses as the conversation happens. Through the connected AI workspace, add your CV, job description, client brief and notes, then get context-grounded answers and prepare the conversation.
@@ -78,6 +76,16 @@ One compact feature menu covers:
 - **Audio/text/screenshots, focus/reading, and voice practice:** paste text in the workspace or open the same conversation in the full app for device-based audio, screenshots, focus controls, and voice practice.
 
 Live listening does not start remotely through MCP. Use the web app on your computer or phone, or the Mac and Android apps. On iPhone, add MagicInterview to your Home Screen for quick access. Links preserve the selected conversation.
+
+## Source
+
+The canonical plugin source lives in the MagicInterview monorepo under `plugins/magicinterview` (Claude and Codex marketplaces at the repository root). The public repository `samihalawa/magicinterview-plugin` is an automatic read-only mirror of that folder, and its releases stay downloadable. Every published listing is indexed in [listings/README.md](listings/README.md).
+
+Install in Claude Code:
+
+```text
+/plugin install magicinterview --marketplace samihalawa/2026-CODEX-MagicInterview
+```
 
 ## Release downloads
 

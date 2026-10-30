@@ -1,0 +1,19 @@
+{
+  "channel": "Claude directory (community connector)",
+  "listingUrl": "https://claude.ai/directory/magicinterview-ai",
+  "observedAt": "2026-10-31",
+  "name": "MagicInterview AI",
+  "badge": "Community",
+  "connectorUrl": "https://magicinterview.ai/mcp",
+  "signIn": "Required (OAuth)",
+  "added": "October 2026",
+  "tagline": "Know what to say next in job interviews, client calls, and meetings—with context from your CV, brief, and notes.",
+  "description": "MagicInterview gives you live, context-grounded suggestions for what to say during job interviews, prospective-client calls, sales conversations, and other meetings. Connect your workspace to Claude to create or update a conversation with your CV and job description, or a client brief and notes. Keep shared project context alongside meeting-specific details, then open the exact conversation in MagicInterview on your computer or phone while you speak. MagicInterview can retrieve saved turns, provide coaching, and return a direct link to your conversation. Requires a MagicInterview account and OAuth sign-in. Calendar, CRM, and web research use the capabilities available to your assistant.",
+  "tools": ["execute_tool", "get_profile", "get_tool_catalog", "learn_tools", "read_tool"],
+  "links": {
+    "madeBy": "https://magicinterview.ai/",
+    "documentation": "https://github.com/samihalawa/magicinterview-plugin#readme",
+    "support": "mailto:support@magicinterview.ai",
+    "privacyPolicy": "https://magicinterview.ai/privacy"
+  }
+}

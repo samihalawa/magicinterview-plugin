@@ -1,0 +1,36 @@
+name: Sync from monorepo
+
+# This public repository is a generated mirror. The source is plugins/magicinterview
+# in samihalawa/2026-CODEX-MagicInterview (this file included); do not edit here.
+# The Anthropic directory webhook, MCP Registry, Glama and LobeHub listings read this repo.
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+concurrency: sync-from-monorepo
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.MONOREPO_TOKEN }}
+          path: mirror
+      - uses: actions/checkout@v4
+        with:
+          repository: samihalawa/2026-CODEX-MagicInterview
+          token: ${{ secrets.MONOREPO_TOKEN }}
+          path: source
+          sparse-checkout: plugins/magicinterview
+      - name: Sync and push
+        run: |
+          rsync -a --delete --exclude .git source/plugins/magicinterview/ mirror/
+          SHA=$(git -C source rev-parse --short HEAD)
+          cd mirror
+          git add -A
+          if git diff --cached --quiet; then echo "Mirror already current"; exit 0; fi
+          git -c user.name="Sami Halawa" -c user.email="samihalawa@users.noreply.github.com" \
+            commit -m "sync: plugins/magicinterview from 2026-CODEX-MagicInterview@$SHA"
+          git push origin HEAD:main
