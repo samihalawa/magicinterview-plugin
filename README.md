@@ -1,5 +1,7 @@
 # MagicInterview — know what to say next, live
 
+> **Moved.** The canonical source of this plugin (MagicInterview: live interview and meeting help that hears the conversation and shows what to say next) now lives in the MagicInterview monorepo `samihalawa/2026-CODEX-MagicInterview` under `plugins/magicinterview`. This repository is archived; its tagged releases stay downloadable.
+
 ![MagicInterview logo](assets/icon-192.png)
 
 MagicInterview helps you know what to say next in interviews and meetings. In the full MagicInterview app, start live listening to receive suggested responses as the conversation happens. Through the connected AI workspace, add your CV, job description, client brief and notes, then get context-grounded answers and prepare the conversation.
