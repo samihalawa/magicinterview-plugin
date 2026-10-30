@@ -2,7 +2,7 @@
 
 MagicInterview is a live interview and meeting helper: it listens to the conversation, uses your CV, job, client and company context, and shows what to say next while you speak. Every assistant listing below connects to the same workspace through `https://magicinterview.ai/mcp`; live audio runs in the full app.
 
-All listings are sourced from this folder (`plugins/magicinterview` in `samihalawa/2026-CODEX-MagicInterview`). The public repository `samihalawa/magicinterview-plugin` is a generated mirror: its `.github/workflows/sync-from-monorepo.yml` (sourced from this folder) pulls `main` every hour or on manual dispatch. Never edit the mirror directly.
+All listings are sourced from this folder (`plugins/magicinterview` in `samihalawa/2026-CODEX-MagicInterview`). The public repository `samihalawa/magicinterview-plugin` is a generated mirror: publish it with `script/publish_plugin_mirror.sh` from the monorepo after committing changes here (the mirror's `sync-from-monorepo.yml` does the same on manual dispatch). Never edit the mirror directly.
 
 | Channel | Listing | Source here | How it updates |
 | --- | --- | --- | --- |
