@@ -93,7 +93,7 @@ Install in Claude Code:
 
 | Use | Download or connect |
 | --- | --- |
-| ChatGPT / OpenAI plugin upload | [OpenAI package 1.4.5](https://github.com/samihalawa/magicinterview-plugin/releases/download/v1.4.5/magicinterview-openai-1.4.5.zip) — includes the OpenAI listing, skills, screenshots and OAuth configuration. |
+| ChatGPT / OpenAI release archive | [OpenAI package 1.4.5](https://github.com/samihalawa/magicinterview-plugin/releases/download/v1.4.5/magicinterview-openai-1.4.5.zip) — archived release package. For a new directory upload, run `python3 scripts/package_openai.py /path/to/magicinterview-openai.zip` from this directory. |
 | Standard plugin files for local installation or development | [Plugin source 1.4.5](https://github.com/samihalawa/magicinterview-plugin/releases/download/v1.4.5/magicinterview-plugin-1.4.5.zip) — extract the archive, then use your client's supported local-plugin installation flow. Includes Claude and Codex manifests, skills and the standard MCP configuration. |
 | Remote MCP clients, including Cursor and VS Code | Connect to `https://magicinterview.ai/mcp` using your client's remote MCP setup. No ZIP is required. [Connection guides](https://magicinterview.ai/guides). |
 

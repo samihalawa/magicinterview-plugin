@@ -87,7 +87,6 @@ def package_members(canonical):
         'skills/magicinterview-prepare-meeting/SKILL.md', 'skills/magicinterview-prepare-meeting/agents/openai.yaml',
         canonical['extensions']['com.openai']['onboardingSkill'].removeprefix('./'),
         interface['composerIcon'].removeprefix('./'), interface['logo'].removeprefix('./'),
-        *(path.removeprefix('./') for path in interface.get('screenshots', [])),
     ]))
 
 
@@ -192,6 +191,8 @@ def main():
     # Package identity comes from the canonical manifest, never a deleted portal record.
     assert manifest['name'] == 'magicinterview', 'Unexpected canonical plugin identity'
     manifest['mcpServers'] = './.mcp.json'
+    # The public directory uploader rejects screenshots in the manifest.
+    manifest['interface'].pop('screenshots', None)
     output = Path(sys.argv[1])
     with zipfile.ZipFile(output, 'w', zipfile.ZIP_DEFLATED) as archive:
         archive.writestr('.codex-plugin/plugin.json', json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')

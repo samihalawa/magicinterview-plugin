@@ -34,13 +34,13 @@ class ListingPackageTests(unittest.TestCase):
         self.edit('plugin.json', lambda data: data['extensions']['com.openai']['interface'].update(screenshots=screenshots))
         self.edit('.codex-plugin/plugin.json', lambda data: data['interface'].update(screenshots=screenshots))
 
-    def test_package_includes_all_advertised_images_and_onboarding(self):
+    def test_package_keeps_onboarding_and_excludes_local_previews(self):
         data = validate_metadata(self.directory)
         members = package_members(data)
         self.assertIn('skills/magicinterview-get-started/SKILL.md', members)
-        self.assertIn('assets/assistant-workspace.jpg', members)
+        self.assertNotIn('assets/assistant-workspace.jpg', members)
         self.assertEqual(data['interface']['screenshots'], ['./assets/assistant-workspace.jpg', './assets/notion-meeting-sync.jpg'])
-        self.assertIn('assets/notion-meeting-sync.jpg', members)
+        self.assertNotIn('assets/notion-meeting-sync.jpg', members)
         self.assertEqual(image_dimensions((root / 'assets/assistant-workspace.jpg').read_bytes()), (1280, 886))
         self.assertEqual(image_dimensions((root / 'assets/mac-coach.webp').read_bytes()), (1600, 1000))
         output = self.directory / 'fresh-upload.zip'
@@ -49,6 +49,9 @@ class ListingPackageTests(unittest.TestCase):
             packaged = json.loads(archive.read('.codex-plugin/plugin.json'))
             self.assertEqual(packaged['name'], 'magicinterview')
             self.assertEqual(packaged['version'], data['version'])
+            self.assertNotIn('screenshots', packaged['interface'])
+            self.assertNotIn('assets/assistant-workspace.jpg', archive.namelist())
+            self.assertNotIn('assets/notion-meeting-sync.jpg', archive.namelist())
             self.assertNotIn('app-6abab8682c508191ba77499620af8241', archive.read('.codex-plugin/plugin.json').decode())
             self.assertEqual({name.split('/')[1] for name in archive.namelist() if name.startswith('skills/')}, {'magicinterview-get-started', 'magicinterview-prepare-meeting'})
             server = json.loads(archive.read('.mcp.json'))['mcpServers']['magicinterview']
