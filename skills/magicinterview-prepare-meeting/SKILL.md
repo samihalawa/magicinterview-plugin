@@ -32,11 +32,17 @@ Do not start a calendar, inbox, CRM or company-research sweep for a live-questio
 
 ## Use the live connection
 
-Use the tools and schemas the current MagicInterview connection exposes. The ChatGPT directory connection exposes named operations directly, such as `magicinterview_list_projects`, `magicinterview_get_conversation`, `magicinterview_request_coaching`, and `magicinterview_get_conversation_url`; call the named tool for each action. Never guess arguments or invoke an operation that is not exposed.
+Use the tools and schemas the current MagicInterview connection exposes. By default every operation is its own named tool with a full input schema, such as `magicinterview_list_projects`, `magicinterview_get_conversation`, `magicinterview_append_turns`, `magicinterview_coach_line`, `magicinterview_request_coaching`, `magicinterview_get_debug_logs` and `magicinterview_get_conversation_url`; call the named tool for each action. Never guess arguments or invoke an operation that is not exposed.
 
-Other MagicInterview clients may use the compact `/mcp` connection. On that connection, use `magicinterview_get_tool_catalog` to browse the operation catalog, then `magicinterview_learn_tools` to learn the needed schemas in one batch, then use `magicinterview_read_tool` for read-only operations and `magicinterview_execute_tool` for changes. Never assume that the two connection shapes have the same callable tool names.
+A client that selected the compact toolset (`/mcp?toolset=compact`) exposes meta tools instead: use `magicinterview_get_tool_catalog` to browse operations, `magicinterview_learn_tools` to learn the needed schemas in one batch, then `magicinterview_read_tool` for read-only operations and `magicinterview_execute_tool` for changes; the same names also work in the default toolset. The operations and arguments are identical in both shapes.
 
-When the host exposes `magicinterview_open_workspace`, use it to open the compact interactive workspace, optionally with the exact `conversationId`. Its data comes from the same connected account. The workspace covers answers, coding, transcript and speaker corrections, context and files, projects and conversations, research and CRM handoffs, recap and follow-up drafts, preferences, account status, and debug logs. Device-based audio, screenshots, focus controls, and voice practice open the selected conversation in the full app. Do not call the app's private helpers from the agent or imply that every host renders MCP Apps. Keep direct conversation links available as well.
+Writes retry on a fresh revision inside the server, so a `STATE_CONFLICT` or missing-conversation error after a retry is real: re-read the account before deciding what to do. Never overwrite the account with a raw `PUT /api/interview-state`.
+
+### Live call loop
+
+When the user is in a call and wants to know what to say, identify the conversation once, then for every new line call `magicinterview_coach_line` with `{ conversationId, speaker: "interviewer" | "candidate", text }`. Say or show the returned `answer` (and `cue` when present); `action: "hold"` with an empty answer means wait. The call saves the line and the answer as turns; reuse the returned `turnId` when retrying so nothing is duplicated, and use `saveTurn: false` only for a throwaway question. `magicinterview_request_coaching` takes the same text as `message` (aliases `question`, `text`, `line`) for a one-off question.
+
+When the host exposes `magicinterview_open_workspace`, use it to open the interactive workspace; it opens on a dashboard with recent conversations, the active conversation's latest lines and answer, projects, sources and debug events, optionally with the exact `conversationId`. Its data comes from the same connected account. The workspace covers answers, coding, transcript and speaker corrections, context and files, projects and conversations, research and CRM handoffs, recap and follow-up drafts, preferences, account status, and debug logs. Device-based audio, screenshots, focus controls, and voice practice open the selected conversation in the full app. Do not call the app's private helpers from the agent or imply that every host renders MCP Apps. Keep direct conversation links available as well.
 
 ## Notion context and optional meeting sync
 
@@ -120,7 +126,7 @@ Fetch and return the direct MagicInterview URL for every prepared conversation. 
 When asked why MagicInterview failed or to retrieve logs:
 
 1. Read current service, database, account, and feature status.
-2. Retrieve persisted debug events newest-first and use filters for level, source, event, and time when they narrow the incident.
+2. Retrieve persisted debug events with `magicinterview_get_debug_logs` (newest-first; pass `conversationId` for one conversation) and use filters for level, source, event, and time when they narrow the incident.
 3. Continue pagination until the relevant time window is covered; do not stop at the first page when the incident may be older.
 4. Correlate events to the exact conversation, operation, timestamp, and correlation identifier.
 5. Report the exact failure, supporting events, affected scope, and smallest corrective action.

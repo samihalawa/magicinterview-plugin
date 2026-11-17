@@ -15,3 +15,7 @@ All listings are sourced from this folder (`plugins/magicinterview` in `samihala
 | LobeHub | `samihalawa-magicinterview-plugin` | `lhm.plugin.json` | Reads the public mirror |
 | Smithery | `sami-k2i2/magicinterview` | `mcp.json`, endpoint `/mcp` | Smithery dashboard |
 | Docker MCP Registry | `servers/magicinterview` PR from the `samihalawa/mcp-registry` fork | `mcp/docker-registry/` | Copy into the fork and update the PR |
+
+## Tool exposure (toolsets)
+
+`https://magicinterview.ai/mcp` serves the `full` toolset by default: every operation is its own `magicinterview_<operation>` tool, and the four legacy meta tools (`get_tool_catalog`, `learn_tools`, `read_tool`, `execute_tool`) stay callable but unlisted. `?toolset=directory` (the ChatGPT URL in `scripts/package_openai.py` and `docs/publishing.json`) is an alias of `full`; `?toolset=compact` or the `X-MagicInterview-Toolset: compact` header lists only the seven compact tools; `?toolset=all` lists both. No directory enforces a tool-count limit in this folder's submissions; the Claude directory snapshot (`claude-directory-connector.json`) records the five tools observed on 2026-10-31, and the live server decides what each client sees. If a directory ever requires the compact set, point its connector URL at `/mcp?toolset=compact`. The service card (`lhm.plugin.json`) lists the `all` toolset.

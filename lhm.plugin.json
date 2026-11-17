@@ -78,154 +78,26 @@
       }
     },
     {
-      "name": "magicinterview_get_tool_catalog",
-      "title": "MagicInterview tool catalog",
-      "description": "Browse available MagicInterview operations by category, with exact names, descriptions, and read/write annotations.",
+      "name": "magicinterview_open_workspace",
+      "title": "Open MagicInterview",
+      "description": "Open your MagicInterview workspace dashboard directly: recent conversations, the active conversation's latest lines and suggested answer, projects, sources, preferences and the latest debug events, all from this connected account's saved data. Live audio and voice practice open in the full app.",
       "inputSchema": {
         "type": "object",
         "properties": {
-          "categories": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "SYSTEM",
-                "PROJECT",
-                "CONVERSATION",
-                "CONTEXT",
-                "COACH",
-                "ACCOUNT",
-                "DEBUG",
-                "NAVIGATION"
-              ]
-            },
-            "maxItems": 8
-          }
-        },
-        "additionalProperties": false
-      },
-      "annotations": {
-        "title": "MagicInterview tool catalog",
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "idempotentHint": true,
-        "openWorldHint": false
-      },
-      "securitySchemes": [
-        {
-          "type": "oauth2",
-          "scopes": [
-            "magicinterview:read",
-            "magicinterview:write"
-          ]
-        }
-      ],
-      "_meta": {
-        "securitySchemes": [
-          {
-            "type": "oauth2",
-            "scopes": [
-              "magicinterview:read",
-              "magicinterview:write"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "magicinterview_learn_tools",
-      "title": "Learn MagicInterview operations",
-      "description": "Retrieve descriptions, read/write annotations, and input schemas for a batch of exact MagicInterview operation names from the catalog.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "toolNames": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "minLength": 1
-            },
-            "minItems": 1,
-            "maxItems": 25
-          },
-          "aspects": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "description",
-                "schema"
-              ]
-            },
-            "minItems": 1,
-            "maxItems": 2,
-            "default": [
-              "description",
-              "schema"
-            ]
-          }
-        },
-        "required": [
-          "toolNames"
-        ],
-        "additionalProperties": false
-      },
-      "annotations": {
-        "title": "Learn MagicInterview operations",
-        "readOnlyHint": true,
-        "destructiveHint": false,
-        "idempotentHint": true,
-        "openWorldHint": false
-      },
-      "securitySchemes": [
-        {
-          "type": "oauth2",
-          "scopes": [
-            "magicinterview:read",
-            "magicinterview:write"
-          ]
-        }
-      ],
-      "_meta": {
-        "securitySchemes": [
-          {
-            "type": "oauth2",
-            "scopes": [
-              "magicinterview:read",
-              "magicinterview:write"
-            ]
-          }
-        ]
-      }
-    },
-    {
-      "name": "magicinterview_read_tool",
-      "title": "Read MagicInterview data",
-      "description": "Run one cataloged read-only MagicInterview operation with its schema-defined arguments. Accepts only operations annotated readOnlyHint: true and never changes workspace data.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "toolName": {
+          "conversationId": {
             "type": "string",
-            "minLength": 1
-          },
-          "arguments": {
-            "type": "object",
-            "additionalProperties": true,
-            "default": {}
+            "minLength": 1,
+            "maxLength": 100
           }
         },
-        "required": [
-          "toolName"
-        ],
         "additionalProperties": false
       },
       "annotations": {
-        "title": "Read MagicInterview data",
         "readOnlyHint": true,
         "destructiveHint": false,
         "idempotentHint": true,
-        "openWorldHint": false
+        "openWorldHint": false,
+        "title": "Open MagicInterview"
       },
       "securitySchemes": [
         {
@@ -245,57 +117,23 @@
               "magicinterview:write"
             ]
           }
-        ]
-      }
-    },
-    {
-      "name": "magicinterview_execute_tool",
-      "title": "Change MagicInterview data",
-      "description": "Run one cataloged MagicInterview write operation with its schema-defined arguments. Accepts only operations annotated readOnlyHint: false, including explicitly requested deletions.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "toolName": {
-            "type": "string",
-            "minLength": 1
-          },
-          "arguments": {
-            "type": "object",
-            "additionalProperties": true,
-            "default": {}
-          }
-        },
-        "required": [
-          "toolName"
         ],
-        "additionalProperties": false
-      },
-      "annotations": {
-        "title": "Change MagicInterview data",
-        "readOnlyHint": false,
-        "destructiveHint": true,
-        "idempotentHint": false,
-        "openWorldHint": true
-      },
-      "securitySchemes": [
-        {
-          "type": "oauth2",
-          "scopes": [
-            "magicinterview:read",
-            "magicinterview:write"
+        "ui": {
+          "resourceUri": "ui://magicinterview/workspace-v1.html"
+        },
+        "openai/ui": {
+          "entrypoints": [
+            {
+              "type": "global"
+            },
+            {
+              "type": "thread"
+            }
           ]
-        }
-      ],
-      "_meta": {
-        "securitySchemes": [
-          {
-            "type": "oauth2",
-            "scopes": [
-              "magicinterview:read",
-              "magicinterview:write"
-            ]
-          }
-        ]
+        },
+        "ui/resourceUri": "ui://magicinterview/workspace-v1.html",
+        "openai/outputTemplate": "ui://magicinterview/workspace-v1.html",
+        "openai/widgetAccessible": true
       }
     },
     {
@@ -396,26 +234,21 @@
       }
     },
     {
-      "name": "magicinterview_open_workspace",
-      "title": "Open MagicInterview",
-      "description": "Open your compact MagicInterview workspace: what to say next, coding help, projects, conversations, sources, transcripts, preferences and debug logs. Uses this connected account's saved data. Live audio and voice practice open in the full app.",
+      "name": "magicinterview_get_status",
+      "title": "MagicInterview: get status",
+      "description": "Read current MCP, database, account, and feature status with exact counts.",
       "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
-        "properties": {
-          "conversationId": {
-            "type": "string",
-            "minLength": 1,
-            "maxLength": 100
-          }
-        },
+        "properties": {},
         "additionalProperties": false
       },
       "annotations": {
+        "title": "MagicInterview: get status",
         "readOnlyHint": true,
         "destructiveHint": false,
         "idempotentHint": true,
-        "openWorldHint": false,
-        "title": "Open MagicInterview"
+        "openWorldHint": false
       },
       "securitySchemes": [
         {
@@ -435,13 +268,2879 @@
               "magicinterview:write"
             ]
           }
-        ],
-        "ui": {
-          "resourceUri": "ui://magicinterview/workspace-v1.html"
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_research_project",
+      "title": "MagicInterview: research project",
+      "description": "Start or reuse the project's online research job. Its sourced notes are saved to the existing project context, replacing the earlier research source. Poll get_project_research for progress and the saved source.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "language": {
+            "type": "string",
+            "maxLength": 20
+          }
         },
-        "ui/resourceUri": "ui://magicinterview/workspace-v1.html",
-        "openai/outputTemplate": "ui://magicinterview/workspace-v1.html",
-        "openai/widgetAccessible": true
+        "required": [
+          "projectId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: research project",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_get_project_research",
+      "title": "MagicInterview: get project research",
+      "description": "Read this account's current project research progress, source, or failure without starting a job.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "projectId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: get project research",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_list_projects",
+      "title": "MagicInterview: list projects",
+      "description": "List projects newest-first, including General, with search, purpose filtering, counts, and bounded pagination.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "purpose": {
+            "type": "string",
+            "enum": [
+              "interview",
+              "meeting",
+              "sales",
+              "practice"
+            ]
+          },
+          "limit": {
+            "default": 25,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "offset": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: list projects",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_get_project",
+      "title": "MagicInterview: get project",
+      "description": "Read a project, its shared notes, attached sources, and paginated conversations with valid app URLs.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "includeContextBodies": {
+            "default": false,
+            "type": "boolean"
+          },
+          "limit": {
+            "default": 25,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "offset": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "required": [
+          "projectId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: get project",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_create_project",
+      "title": "MagicInterview: create project",
+      "description": "Create a project carrying shared purpose, company, role, notes, sources, and optional meeting provenance. Existing conversations may be moved into it; omitted sources use account defaults and an omitted language uses the account's default language.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "purpose": {
+            "default": "interview",
+            "type": "string",
+            "enum": [
+              "interview",
+              "meeting",
+              "sales",
+              "practice"
+            ]
+          },
+          "company": {
+            "default": "",
+            "type": "string",
+            "maxLength": 500
+          },
+          "role": {
+            "default": "",
+            "type": "string",
+            "maxLength": 500
+          },
+          "notes": {
+            "default": "",
+            "type": "string",
+            "maxLength": 750000
+          },
+          "language": {
+            "description": "Speech language of its conversations, e.g. es-ES; empty detects automatically.",
+            "type": "string",
+            "maxLength": 20
+          },
+          "contextItemIds": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "conversationIds": {
+            "default": [],
+            "maxItems": 5000,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "externalSource": {
+            "type": "string",
+            "maxLength": 180
+          },
+          "meetingAt": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: create project",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_update_project",
+      "title": "MagicInterview: update project",
+      "description": "Update shared project metadata, notes, sources, or meeting provenance. Propagates changed inherited fields and source additions/removals, preserving conversation-specific fields, notes, and other sources.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "purpose": {
+            "type": "string",
+            "enum": [
+              "interview",
+              "meeting",
+              "sales",
+              "practice"
+            ]
+          },
+          "company": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "notes": {
+            "type": "string",
+            "maxLength": 750000
+          },
+          "language": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "contextItemIds": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "externalSource": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 180
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "meetingAt": {
+            "anyOf": [
+              {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "projectId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: update project",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_delete_project",
+      "title": "MagicInterview: delete project",
+      "description": "Delete a project folder and move its conversations to General, preserving their content and sources. General itself cannot be deleted.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "projectId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: delete project",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_set_conversation_project",
+      "title": "MagicInterview: set conversation project",
+      "description": "Move one conversation into a project, or into General with projectId null. Preserves individual context and notes and adds the new project's sources; membership remains unique.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "projectId": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "conversationId",
+          "projectId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: set conversation project",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_set_project_context_attachment",
+      "title": "MagicInterview: set project context attachment",
+      "description": "Attach or detach one shared source on a project and propagate the change to its conversations while preserving unrelated individual sources.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "contextId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "attached": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "projectId",
+          "contextId",
+          "attached"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: set project context attachment",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_list_conversations",
+      "title": "MagicInterview: list conversations",
+      "description": "List conversations newest-first with project membership, optional project filtering, bounded pagination, and lightweight summaries.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "purpose": {
+            "type": "string",
+            "enum": [
+              "interview",
+              "meeting",
+              "sales",
+              "practice"
+            ]
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "limit": {
+            "default": 25,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "offset": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: list conversations",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_get_conversation",
+      "title": "MagicInterview: get conversation",
+      "description": "Retrieve one conversation, optionally including paginated turns, attached context bodies, coaching, draft, and continuation.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "includeTurns": {
+            "default": false,
+            "type": "boolean"
+          },
+          "turnLimit": {
+            "default": 100,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 240
+          },
+          "turnOffset": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          },
+          "includeContextBodies": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "conversationId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: get conversation",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_create_conversation",
+      "title": "MagicInterview: create conversation",
+      "description": "Create a conversation in a project or General and optionally make it active. Inherits project metadata and sources with optional individual overrides; project notes stay shared. Never evicts existing conversations.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "purpose": {
+            "type": "string",
+            "enum": [
+              "interview",
+              "meeting",
+              "sales",
+              "practice"
+            ]
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "company": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "notes": {
+            "default": "",
+            "type": "string",
+            "maxLength": 750000
+          },
+          "contextItemIds": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "speechLanguage": {
+            "default": "en-US",
+            "type": "string",
+            "maxLength": 32
+          },
+          "activate": {
+            "default": true,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: create conversation",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_update_conversation",
+      "title": "MagicInterview: update conversation",
+      "description": "Update conversation metadata, attached context IDs, language, draft, or continuation. Omitted fields remain unchanged.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "purpose": {
+            "type": "string",
+            "enum": [
+              "interview",
+              "meeting",
+              "sales",
+              "practice"
+            ]
+          },
+          "role": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "company": {
+            "type": "string",
+            "maxLength": 500
+          },
+          "notes": {
+            "type": "string",
+            "maxLength": 750000
+          },
+          "contextItemIds": {
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "speechLanguage": {
+            "type": "string",
+            "maxLength": 32
+          },
+          "draft": {
+            "type": "string",
+            "maxLength": 12000
+          },
+          "continuation": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "said": {
+                    "type": "string",
+                    "maxLength": 12000
+                  },
+                  "ghost": {
+                    "type": "string",
+                    "maxLength": 12000
+                  }
+                },
+                "required": [
+                  "said",
+                  "ghost"
+                ]
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "conversationId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: update conversation",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_delete_conversation",
+      "title": "MagicInterview: delete conversation",
+      "description": "Delete one conversation. If it is the only conversation, replace it with a new empty conversation so the workspace remains valid.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "conversationId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: delete conversation",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_set_active_conversation",
+      "title": "MagicInterview: set active conversation",
+      "description": "Select the conversation MagicInterview opens and refreshes as active.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "conversationId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: set active conversation",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_append_turns",
+      "title": "MagicInterview: append turns",
+      "description": "Append up to 20 attributed turns to a conversation in order. IDs may be supplied for idempotent callers.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "turns": {
+            "minItems": 1,
+            "maxItems": 20,
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                },
+                "speaker": {
+                  "type": "string",
+                  "enum": [
+                    "automatic",
+                    "interviewer",
+                    "candidate",
+                    "coach",
+                    "system"
+                  ]
+                },
+                "text": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 12000
+                },
+                "origin": {
+                  "default": "manual",
+                  "type": "string",
+                  "enum": [
+                    "manual",
+                    "pasted",
+                    "live-speech",
+                    "computer-audio",
+                    "audio-file"
+                  ]
+                },
+                "sourceSpeaker": {
+                  "type": "string",
+                  "maxLength": 100
+                },
+                "sourceRole": {
+                  "type": "string",
+                  "enum": [
+                    "interviewer",
+                    "candidate",
+                    "other"
+                  ]
+                },
+                "action": {
+                  "type": "string",
+                  "enum": [
+                    "compose",
+                    "refine",
+                    "continue",
+                    "hold"
+                  ]
+                },
+                "format": {
+                  "type": "string",
+                  "enum": [
+                    "spoken",
+                    "coding"
+                  ]
+                },
+                "latencyMs": {
+                  "type": "number",
+                  "minimum": 0
+                },
+                "at": {
+                  "type": "number"
+                },
+                "roleLocked": {
+                  "type": "boolean"
+                },
+                "roleCorrected": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "speaker",
+                "text"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "conversationId",
+          "turns"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: append turns",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_update_turn",
+      "title": "MagicInterview: update turn",
+      "description": "Update one saved turn without changing its ID.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "turnId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "speaker": {
+            "type": "string",
+            "enum": [
+              "automatic",
+              "interviewer",
+              "candidate",
+              "coach",
+              "system"
+            ]
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000
+          },
+          "origin": {
+            "type": "string",
+            "enum": [
+              "manual",
+              "pasted",
+              "live-speech",
+              "computer-audio",
+              "audio-file"
+            ]
+          },
+          "sourceSpeaker": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "sourceRole": {
+            "type": "string",
+            "enum": [
+              "interviewer",
+              "candidate",
+              "other"
+            ]
+          },
+          "roleLocked": {
+            "type": "boolean"
+          },
+          "roleCorrected": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "conversationId",
+          "turnId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: update turn",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_delete_turns",
+      "title": "MagicInterview: delete turns",
+      "description": "Delete selected turns from one conversation.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "turnIds": {
+            "minItems": 1,
+            "maxItems": 100,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          }
+        },
+        "required": [
+          "conversationId",
+          "turnIds"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: delete turns",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_clear_conversation",
+      "title": "MagicInterview: clear conversation",
+      "description": "Clear all turns, coaching, draft, and live continuation from a conversation while preserving its setup and attached context.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "conversationId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: clear conversation",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_list_context_sources",
+      "title": "MagicInterview: list context sources",
+      "description": "List reusable context sources with optional search, type filtering, body inclusion, and pagination.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "type": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "includeBody": {
+            "default": false,
+            "type": "boolean"
+          },
+          "limit": {
+            "default": 25,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          },
+          "offset": {
+            "default": 0,
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9007199254740991
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: list context sources",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_get_context_source",
+      "title": "MagicInterview: get context source",
+      "description": "Retrieve one complete context source and its saved-original file metadata.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "contextId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "includeBody": {
+            "default": true,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "contextId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: get context source",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_create_context_source",
+      "title": "MagicInterview: create context source",
+      "description": "Create reusable context and optionally attach it to selected projects and their conversations, selected individual conversations, or every conversation as a default.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "type": {
+            "default": "Custom",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "body": {
+            "default": "",
+            "type": "string",
+            "maxLength": 750000
+          },
+          "isDefault": {
+            "default": false,
+            "type": "boolean"
+          },
+          "internalOnly": {
+            "default": false,
+            "type": "boolean"
+          },
+          "externalSource": {
+            "type": "string",
+            "maxLength": 180
+          },
+          "attachToConversationIds": {
+            "default": [],
+            "maxItems": 5000,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "attachToProjectIds": {
+            "default": [],
+            "maxItems": 1000,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: create context source",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_update_context_source",
+      "title": "MagicInterview: update context source",
+      "description": "Update a reusable context source. Setting a CV/profile as default displaces the previous default CV/profile.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "contextId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "type": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "body": {
+            "type": "string",
+            "maxLength": 750000
+          },
+          "isDefault": {
+            "type": "boolean"
+          },
+          "internalOnly": {
+            "type": "boolean"
+          },
+          "externalSource": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 180
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "contextId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: update context source",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_delete_context_source",
+      "title": "MagicInterview: delete context source",
+      "description": "Delete one context source, detach it from every conversation, and delete its stored original files.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "contextId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "contextId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: delete context source",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_set_context_attachment",
+      "title": "MagicInterview: set context attachment",
+      "description": "Attach or detach one reusable context source from one conversation.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "contextId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "attached": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "conversationId",
+          "contextId",
+          "attached"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: set context attachment",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_import_context_file",
+      "title": "MagicInterview: import context file",
+      "description": "Store an original context file from base64 plus its extracted text, preserving the same size, duplicate, revision, and account limits as the app upload flow.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "contextId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "mimeType": {
+            "default": "application/octet-stream",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "contentBase64": {
+            "type": "string",
+            "minLength": 4,
+            "maxLength": 28000000
+          },
+          "extractedText": {
+            "type": "string",
+            "maxLength": 750000
+          }
+        },
+        "required": [
+          "contextId",
+          "name",
+          "contentBase64",
+          "extractedText"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: import context file",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_list_context_files",
+      "title": "MagicInterview: list context files",
+      "description": "List saved original files for one context source without returning binary content.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "contextId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "contextId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: list context files",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_get_context_file",
+      "title": "MagicInterview: get context file",
+      "description": "Retrieve saved original-file metadata and optionally its base64 content. Content is omitted by default to protect context size.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "fileId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "includeContent": {
+            "default": false,
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "fileId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: get context file",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_get_preferences",
+      "title": "MagicInterview: get preferences",
+      "description": "Read account-level model, speech, appearance, microphone, and reading preferences.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: get preferences",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_update_preferences",
+      "title": "MagicInterview: update preferences",
+      "description": "Update account-level preferences. Omitted fields remain unchanged.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "speechEngine": {
+            "type": "string",
+            "enum": [
+              "browser",
+              "groq",
+              "whisper-tiny",
+              "whisper-base"
+            ]
+          },
+          "coachModel": {
+            "type": "string"
+          },
+          "groqSttModel": {
+            "type": "string",
+            "enum": [
+              "whisper-large-v3",
+              "whisper-large-v3-turbo"
+            ]
+          },
+          "theme": {
+            "type": "string",
+            "enum": [
+              "system",
+              "light",
+              "dark"
+            ]
+          },
+          "microphoneDeviceId": {
+            "type": "string",
+            "maxLength": 512
+          },
+          "focusMode": {
+            "type": "boolean"
+          },
+          "inputRole": {
+            "type": "string",
+            "enum": [
+              "automatic",
+              "interviewer",
+              "candidate"
+            ]
+          },
+          "readingSize": {
+            "type": "integer",
+            "minimum": 16,
+            "maximum": 44
+          },
+          "readingSpeed": {
+            "type": "integer",
+            "minimum": 80,
+            "maximum": 240
+          },
+          "contrast": {
+            "type": "string",
+            "enum": [
+              "standard",
+              "high"
+            ]
+          },
+          "defaultLanguage": {
+            "description": "The language new projects start in, e.g. es-ES; empty detects automatically.",
+            "type": "string",
+            "maxLength": 20
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: update preferences",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_request_coaching",
+      "title": "MagicInterview: request coaching",
+      "description": "Use this when the user wants help answering an interview question, coding question, client objection or meeting turn now. Generates a response from the selected conversation and attached context. Saves the supplied turn and coaching answer unless save is false. Accepts user-supplied text as message (question, text and line are accepted as aliases); live audio capture runs in the full app. For a live call, prefer coach_line.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000,
+            "description": "What was said or asked. Aliases: question, text, line."
+          },
+          "speaker": {
+            "default": "automatic",
+            "type": "string",
+            "enum": [
+              "automatic",
+              "interviewer",
+              "candidate"
+            ]
+          },
+          "channelRoleLocked": {
+            "type": "boolean"
+          },
+          "coachCommand": {
+            "type": "string",
+            "enum": [
+              "coding-session",
+              "retry-answer",
+              "extend-answer"
+            ]
+          },
+          "coachModel": {
+            "type": "string"
+          },
+          "save": {
+            "default": true,
+            "type": "boolean"
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000,
+            "description": "Alias of message; send message."
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000,
+            "description": "Alias of message; send message."
+          },
+          "line": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000,
+            "description": "Alias of message; send message."
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000,
+            "description": "Alias of message; send message."
+          }
+        },
+        "required": [
+          "conversationId",
+          "message"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: request coaching",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_coach_line",
+      "title": "MagicInterview: coach line",
+      "description": "Live-call coaching in one call: give the line that was just said and who said it; MagicInterview appends it to the conversation as a turn (saveTurn, default true) and returns what to say next. Returns action (compose, refine, continue or hold), answer (the words to say; empty when action is hold), cue, latencyMs and the saved turn id. Uses the same coach, Pro check, model routing and guards as the live app. Loop it for every new line during a call; pass the returned turnId again to retry a failed call without duplicating the line.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000,
+            "description": "The line that was just said. Aliases: message, question, line."
+          },
+          "speaker": {
+            "default": "interviewer",
+            "description": "Who said it: interviewer (them) or candidate (the user).",
+            "type": "string",
+            "enum": [
+              "interviewer",
+              "candidate",
+              "automatic"
+            ]
+          },
+          "saveTurn": {
+            "default": true,
+            "description": "Append the line and the answer to the saved conversation. Alias: save.",
+            "type": "boolean"
+          },
+          "turnId": {
+            "description": "Idempotency key for the line; reuse it when retrying.",
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "origin": {
+            "default": "manual",
+            "type": "string",
+            "enum": [
+              "manual",
+              "pasted",
+              "live-speech",
+              "computer-audio",
+              "audio-file"
+            ]
+          },
+          "coachModel": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000,
+            "description": "Alias of text; send text."
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000,
+            "description": "Alias of text; send text."
+          },
+          "line": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000,
+            "description": "Alias of text; send text."
+          },
+          "content": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 12000,
+            "description": "Alias of text; send text."
+          },
+          "save": {
+            "description": "Alias of saveTurn; send saveTurn.",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "conversationId",
+          "text"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: coach line",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_get_debug_logs",
+      "title": "MagicInterview: get debug logs",
+      "description": "Retrieve persisted MagicInterview debug events newest-first. Pass conversationId for its MCP events and the bounded client snapshot captured by Copy debug log; use get_conversation for the complete transcript and coaching. Filter and paginate with nextBefore.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "level": {
+            "type": "string",
+            "enum": [
+              "debug",
+              "info",
+              "warn",
+              "error"
+            ]
+          },
+          "source": {
+            "type": "string",
+            "maxLength": 64
+          },
+          "event": {
+            "type": "string",
+            "maxLength": 120
+          },
+          "since": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "before": {
+            "type": "string",
+            "format": "date-time",
+            "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d:[0-5]\\d(?:\\.\\d+)?(?:Z|([+-](?:[01]\\d|2[0-3]):[0-5]\\d)))$"
+          },
+          "limit": {
+            "default": 25,
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: get debug logs",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_get_conversation_url",
+      "title": "MagicInterview: get conversation url",
+      "description": "Return the current-domain URL that opens MagicInterview directly on one conversation.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "conversationId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: get conversation url",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_get_notion_sync",
+      "title": "MagicInterview: get notion sync",
+      "description": "Read this account's Notion connection and meeting-sync status, home URL, selected projects and last error.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: get notion sync",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_configure_notion_sync",
+      "title": "MagicInterview: configure notion sync",
+      "description": "Enable ongoing Notion sync under an authorized parent page. Select project IDs, or null for all. Creates stable Projects and Meetings databases. Notion owns Brief; MagicInterview owns transcript and coaching. Requires an existing Notion connection with insert/update permission.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "parentPageId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "projectIds": {
+            "default": null,
+            "anyOf": [
+              {
+                "maxItems": 1000,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 100
+                }
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "parentPageId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: configure notion sync",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_sync_notion_meetings",
+      "title": "MagicInterview: sync notion meetings",
+      "description": "Sync the configured projects now: pull editable Notion meeting briefs into attached context and update meeting details, transcripts and coaching in Notion. Preserves manual Notion notes.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: sync notion meetings",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_disable_notion_sync",
+      "title": "MagicInterview: disable notion sync",
+      "description": "Stop automatic Notion sync while preserving the Notion pages, meeting mappings and imported MagicInterview sources.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: disable notion sync",
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_import_notion_source",
+      "title": "MagicInterview: import notion source",
+      "description": "Import a shared Notion page as reusable context, or update its existing source. Optionally attach to an existing project or conversation.",
+      "inputSchema": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
+        "type": "object",
+        "properties": {
+          "pageId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "projectId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "conversationId": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          }
+        },
+        "required": [
+          "pageId"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview: import notion source",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_get_tool_catalog",
+      "title": "MagicInterview tool catalog",
+      "description": "Legacy catalog of MagicInterview operations by category, with exact names, descriptions, and read/write annotations. Every operation is also its own tool, magicinterview_<operation>, with its full input schema; call it directly.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "SYSTEM",
+                "PROJECT",
+                "CONVERSATION",
+                "CONTEXT",
+                "COACH",
+                "ACCOUNT",
+                "DEBUG",
+                "NAVIGATION"
+              ]
+            },
+            "maxItems": 8
+          }
+        },
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "MagicInterview tool catalog",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_learn_tools",
+      "title": "Learn MagicInterview operations",
+      "description": "Legacy: retrieve descriptions, read/write annotations, and input schemas for a batch of exact MagicInterview operation names. The same schemas are the input schemas of the direct magicinterview_<operation> tools.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "toolNames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "maxItems": 25
+          },
+          "aspects": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "description",
+                "schema"
+              ]
+            },
+            "minItems": 1,
+            "maxItems": 2,
+            "default": [
+              "description",
+              "schema"
+            ]
+          }
+        },
+        "required": [
+          "toolNames"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Learn MagicInterview operations",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_read_tool",
+      "title": "Read MagicInterview data",
+      "description": "Legacy dispatcher: run one read-only MagicInterview operation by name with its schema-defined arguments. Accepts only operations annotated readOnlyHint: true and never changes workspace data. Prefer calling magicinterview_<operation> directly.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "toolName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "arguments": {
+            "type": "object",
+            "additionalProperties": true,
+            "default": {}
+          }
+        },
+        "required": [
+          "toolName"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Read MagicInterview data",
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": false
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "name": "magicinterview_execute_tool",
+      "title": "Change MagicInterview data",
+      "description": "Legacy dispatcher: run one MagicInterview write operation by name with its schema-defined arguments. Accepts only operations annotated readOnlyHint: false, including explicitly requested deletions. Prefer calling magicinterview_<operation> directly.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "toolName": {
+            "type": "string",
+            "minLength": 1
+          },
+          "arguments": {
+            "type": "object",
+            "additionalProperties": true,
+            "default": {}
+          }
+        },
+        "required": [
+          "toolName"
+        ],
+        "additionalProperties": false
+      },
+      "annotations": {
+        "title": "Change MagicInterview data",
+        "readOnlyHint": false,
+        "destructiveHint": true,
+        "idempotentHint": false,
+        "openWorldHint": true
+      },
+      "securitySchemes": [
+        {
+          "type": "oauth2",
+          "scopes": [
+            "magicinterview:read",
+            "magicinterview:write"
+          ]
+        }
+      ],
+      "_meta": {
+        "securitySchemes": [
+          {
+            "type": "oauth2",
+            "scopes": [
+              "magicinterview:read",
+              "magicinterview:write"
+            ]
+          }
+        ]
       }
     },
     {

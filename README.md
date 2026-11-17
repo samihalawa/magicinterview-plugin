@@ -62,9 +62,9 @@ Your assistant sets up the context and opens the right conversation. Start liste
 
 **Notion notes and meeting sync:** Connect Notion from Workspace → Notion on the web to import shared pages as reusable sources, or enable optional meeting sync. With meeting sync enabled, keep your brief in Notion and bring transcripts and saved coaching back to your notes. [Set up Notion](https://magicinterview.ai/guides/connect-notion). Setup and sync management use the web app; saved sources stay available across signed-in devices.
 
-## A compact workspace inside your assistant
+## A workspace dashboard inside your assistant
 
-In compatible MCP App hosts, ask to open MagicInterview. The interactive workspace uses your connected account's real projects, conversations, sources, preferences, and saved history—not a separate copy.
+In compatible MCP App hosts, ask to open MagicInterview. It opens on a dashboard: your recent conversations, the active conversation's latest lines and suggested answer, projects, sources and the latest debug events, with no extra navigation. The interactive workspace uses your connected account's real projects, conversations, sources, preferences, and saved history—not a separate copy.
 
 One compact feature menu covers:
 
@@ -111,7 +111,41 @@ For clients configured manually, the remote Streamable HTTP endpoint is:
 https://magicinterview.ai/mcp
 ```
 
-For the public ChatGPT directory, use `https://magicinterview.ai/mcp?toolset=directory` to expose each supported operation directly. The default endpoint uses a compact operation catalog for other clients.
+### Every operation is its own tool
+
+By default `/mcp` lists every operation as a named tool with its full JSON input schema and read-only/destructive annotations (`magicinterview_list_conversations`, `magicinterview_get_conversation`, `magicinterview_create_conversation`, `magicinterview_append_turns`, `magicinterview_coach_line`, `magicinterview_request_coaching`, `magicinterview_get_debug_logs`, `magicinterview_get_conversation_url`, projects, context sources, preferences and Notion sync, plus `magicinterview_get_profile`, `magicinterview_prepare_meeting` and `magicinterview_open_workspace`). Call them directly; no catalog step is needed.
+
+| Toolset | Select with | What `tools/list` shows |
+| --- | --- | --- |
+| `full` (default) | nothing, or `?toolset=full` / `?toolset=directory` | Every operation as `magicinterview_<operation>`. `?toolset=directory` is the URL the ChatGPT listing already uses and is the same set. |
+| `compact` | `?toolset=compact` or header `X-MagicInterview-Toolset: compact` | Seven meta tools: profile, `get_tool_catalog`, `learn_tools`, `read_tool`, `execute_tool`, `prepare_meeting`, `open_workspace`. Use it for a client with a small tool budget. |
+| `all` | `?toolset=all` | The full set plus the four legacy meta tools. |
+
+Every operation stays callable by name in every toolset, and the four legacy tools (`get_tool_catalog`, `learn_tools`, `read_tool`, `execute_tool`) keep working in the default toolset for existing clients; only what `tools/list` shows changes.
+
+Writes never surface an account race. If the web or mobile app saves while a tool is writing, the server recomputes the tool's change on the fresh revision and writes again (up to eight attempts, then `STATE_CONFLICT` with `details.attempts`). A conversation id missing from one read is looked up again before `CONVERSATION_NOT_FOUND` is returned. Never replace the whole account with `PUT /api/interview-state`.
+
+### Live-coaching loop
+
+During a call, send each new line to `magicinterview_coach_line` and say the returned `answer`:
+
+```json
+{ "conversationId": "<id>", "speaker": "interviewer", "text": "Tell me about a migration you led." }
+```
+
+```json
+{ "action": "compose", "answer": "I led the move to ...", "cue": "Lead with the result.", "latencyMs": 640, "saved": true, "turnId": "<id>" }
+```
+
+The line is appended to the conversation as a turn, the answer is saved, and the call uses the same coach, Pro check and guards as the app. `action: "hold"` means there is nothing to say yet (the answer is empty). Use `speaker: "candidate"` for the user's own lines, `saveTurn: false` to coach without saving, and repeat the returned `turnId` when retrying so the line is never duplicated. `magicinterview_request_coaching` accepts `message`, or its aliases `question`, `text` and `line`.
+
+### Reading debug logs
+
+```json
+{ "tool": "magicinterview_get_debug_logs", "arguments": { "conversationId": "<id>", "level": "error", "limit": 25 } }
+```
+
+Events come newest-first; continue with `before` set to the returned `nextBefore` until the incident window is covered. `magicinterview_get_status` reports the connection, database and account counts, and `magicinterview_get_conversation` returns the full transcript and saved coaching.
 
 ## Suggested prompts
 
